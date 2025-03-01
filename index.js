@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.get('/', async (req, res) => {
   const client = await pool.connect();
   try {
-    const result = await client.query('SELECT * FROM todos ORDER BY created_at DESC');
+    const result = await client.query('SELECT * FROM todos');
     res.render('index', { todos: result.rows });
   } catch (err) {
     console.error('Error fetching todos:', err);
